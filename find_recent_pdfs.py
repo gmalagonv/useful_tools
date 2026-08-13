@@ -5,9 +5,19 @@ import time
 import shutil
 import subprocess
 from pathlib import Path
+import platform
 
-DOWNLOADS = Path("/Users/gerard/Downloads")
-DEST = Path("/Users/gerard/Downloads/papers_mess")
+os = platform.system()
+
+if os == "Darwin":  # macOS
+    DOWNLOADS = Path("/Users/gerard/Downloads")
+    DEST = Path("/Users/gerard/Downloads/papers_mess")
+elif os == "Linux":
+    DOWNLOADS = Path("/home/gerard/Downloads")
+    DEST = Path("/home/gerard/Downloads/papers_mess")
+else:
+    raise NotImplementedError("Unsupported operating system")
+
 HOURS = 3
 
 
